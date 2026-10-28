@@ -17,7 +17,7 @@ function loadLeaflet():Promise<LeafletFactory>{
  if(typeof window==='undefined') return Promise.reject(new Error('Client only'));
  if(window.L) return Promise.resolve(window.L);
  if(leafletLoad) return leafletLoad;
- leafletLoad = new Promise((resolve,reject)=>{
+ leafletLoad = new Promise<LeafletFactory>((resolve,reject)=>{
   const cssId='falcons-leaflet-css';
   if(!document.getElementById(cssId)){
    const link=document.createElement('link');link.id=cssId;link.rel='stylesheet';link.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';link.integrity='sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoTM2AFNufom9Q=';link.crossOrigin='anonymous';document.head.appendChild(link);
